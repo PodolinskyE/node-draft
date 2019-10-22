@@ -1,8 +1,12 @@
 import { logger } from './utils/logger/logger'
+import { init as connectDb } from './services/db.main'
 import { init as initServer, start as startServer } from './server'
 import { init as bindRoutes } from './routes'
 
 async function init (): Promise<void> {
+  
+  const connection = await connectDb()
+  logger.info('db connected')
 
   initServer()
   logger.info('server initiated')
