@@ -3,5 +3,6 @@ declare namespace Express {
     middlewareData?: {
       [key: string]: any
     }
+    log?: import('../../utils/logger/logger').Logger
   }
 }

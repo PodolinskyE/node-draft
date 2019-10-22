@@ -1,7 +1,9 @@
+import { config } from './config'
 import express, { Express } from 'express'
 import cookieParser from 'cookie-parser'
 import { handleError } from './utils/error.controller'
 import { initCommonMiddleware } from './utils/common.middleware'
+import { attachLogger, logRoute } from './utils/logger/logger.middleware'
 
 
 export let server: Express
@@ -14,12 +16,18 @@ export function init (): void {
     limit: '50mb'
   }))
   server.use(cookieParser())
+  
   // add middleware data field
   server.use(initCommonMiddleware)
+  
+  server.use(attachLogger)
+  if (config.host.env === 'local') {
+    server.use(logRoute)
+  }
 }
 
 
 export function start (): void {
   server.use(handleError)
-  server.listen(4321)
+  server.listen(config.host.port)
 }
