@@ -16,8 +16,6 @@ export function init (): void {
   server.use(cookieParser())
   // add middleware data field
   server.use(initCommonMiddleware)
-  
-  server.use('/', (req, res) => { res.send('ok')})
 }
 
 
