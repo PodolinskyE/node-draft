@@ -1,0 +1,21 @@
+{
+  "name": "node-draft",
+  "version": "1.0.0",
+  "description": "node-draft",
+  "main": "index.js",
+  "scripts": {
+    "start": "export \"NODE_ENV=local\" && tsc && \"node dist/index.js\"",
+    "debug": "export \"NODE_ENV=local\" && tsc-watch --onSuccess \"node --inspect dist/index.js\"",
+    "debug-brk": "export \"NODE_ENV=local\" && tsc-watch --onSuccess \"node --inspect-brk dist/index.js\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/mongodb": "^3.3.6",
+    "@types/node": "^12.11.2",
+    "tsc-watch": "^4.0.0",
+    "typescript": "^3.6.4"
+  }
+}

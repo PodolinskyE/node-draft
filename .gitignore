@@ -1,0 +1,38 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+
+# Runtime data
+pids
+*.pid
+*.seed
+Thumbs.db
+
+
+# Dependency directory
+node_modules
+bower_components
+
+
+#IDE configuration files
+.idea
+.vscode
+.DS_Store
+nbproject
+*.sublime*
+
+
+#build files
+out-tsc
+dist
+
+
+#local usage
+tmp
+temp
+
