@@ -1,6 +1,6 @@
 import { ObjectId } from 'mongodb'
 import { userRepository } from '../../repositories'
-import { User, blackList, getUsersProjection } from '../../entities/user'
+import { User } from '../../entities/user'
 
 
 export const createUser = async (
@@ -17,6 +17,19 @@ export const createUser = async (
   return result
 }
 
+export async function getUsersPage (filter: any) {
+  return await userRepository
+    .find()
+    .toArray()
+}
+
+export function getById(id: string) {
+  return userRepository.findOne({
+    _id: new ObjectId(id),
+    deleted: null
+  })
+}
+
 export const updateUser = async (
   id: string,
   updates: Partial<User>
@@ -31,24 +44,10 @@ export const updateUser = async (
   )).value
 }
 
-export async function getAll () {
-  return await userRepository
-    .find()
-    .project(getUsersProjection)
-    .toArray()
-}
-
-
-export function getById(id: string) {
-  return userRepository.findOne({
-    _id: new ObjectId(id),
-    deleted: null
-  })
-}
-
 export async function destroyUser (id: string) {
   return await userRepository
     .deleteOne({
       _id: new ObjectId(id)
     })
 }
+

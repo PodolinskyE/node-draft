@@ -6,6 +6,7 @@ import { getById } from './user.middleware'
 
 import {
   createUser,
+  getUsersPage,
   updateUser,
   destroyUser,
   getUser
@@ -17,6 +18,9 @@ const router = Router()
 
 
 router.post('/', createUser)
+
+// TODO validate payload
+router.get('/filter', getUsersPage)
 
 router.use('/:id', validateIdFormat, getById)
 router.get('/:id', getUser)

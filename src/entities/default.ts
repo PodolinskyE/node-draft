@@ -3,5 +3,5 @@ export type Default = {
   _id?: ObjectId
   createDate: Date
   updateDate: Date
-  deleted: boolean
+  deleted?: boolean
 }

@@ -1,3 +1,5 @@
+import { MongoClientOptions } from 'mongodb'
+
 import { logger } from './utils/logger/logger'
 
 const host = {
@@ -6,7 +8,7 @@ const host = {
   port: 3000
 }
 
-const mongodbs: any = {
+const mongodbs: { [key: string]: { [key:string]: { uri: string, name: string, options: MongoClientOptions } } } = {
   local: {
     main : {
       uri: 'mongodb://localhost:27017',
@@ -15,7 +17,7 @@ const mongodbs: any = {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         poolSize: 5, // default
-        keepAlive: 30000, // default
+        keepAliveInitialDelay: 30000, // default
         connectTimeoutMS: 5000 // default === 30000
       }
     }

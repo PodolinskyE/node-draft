@@ -3,7 +3,8 @@ import { User } from '../../entities/user'
 import {
   createUser as serviceCreateUser,
   updateUser as serviceUpdateUser,
-  destroyUser as servicedestroyUser
+  destroyUser as servicedestroyUser,
+  getUsersPage as serviceGetUsersPage
 } from './user.service'
 
 
@@ -12,6 +13,18 @@ export async function createUser (req: Request, res: Response, next: NextFunctio
     const payload = <User>req.body
     const user = await serviceCreateUser( payload )
     res.send(user)
+  } catch (err) {
+    next(err)
+  }
+}
+
+export async function getUsersPage (req: Request, res: Response, next: NextFunction): Promise<void> {
+  try {
+    const { query } = req
+
+    const userList = await serviceGetUsersPage( query )
+    
+    res.send(userList)
   } catch (err) {
     next(err)
   }

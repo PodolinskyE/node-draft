@@ -10,6 +10,7 @@ export const getById = async (req: Request, res: Response, next: NextFunction): 
     
     if (!user) {
       res.status(404).json({ message: 'Cant find user'})
+      return
     }
     req.middlewareData.user = user
     next()    
