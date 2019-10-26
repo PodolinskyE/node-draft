@@ -51,3 +51,9 @@ export async function destroyUser (id: string) {
     })
 }
 
+export async function findUsername (username: string): Promise<User> {
+  return await userRepository
+    .findOne({
+      username
+    })
+}
