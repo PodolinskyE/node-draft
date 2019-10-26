@@ -2,7 +2,7 @@ import { config } from './config'
 import express, { Express } from 'express'
 import cookieParser from 'cookie-parser'
 import { handleError } from './utils/error.controller'
-import { initCommonMiddleware } from './utils/common.middleware'
+import { initCommonMiddleware } from './middleware/common.middleware'
 import { attachLogger, logRoute } from './utils/logger/logger.middleware'
 
 
