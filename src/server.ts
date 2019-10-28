@@ -17,10 +17,7 @@ export function init (): void {
     limit: '50mb'
   }))
   server.use(cookieParser())
-
-  // add middleware data field
   server.use(initCommonMiddleware)
-
   server.use(attachLogger)
   if (config.host.env === 'local') {
     server.use(logRoute)

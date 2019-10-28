@@ -8,6 +8,11 @@ const host = {
   port: 3000
 }
 
+const jwt = {
+  key: 'learn',
+  expires: 5 * 60 * 1000
+}
+
 const mongodbs: { [key: string]: { [key:string]: { uri: string, name: string, options: MongoClientOptions } } } = {
   local: {
     main : {
@@ -26,7 +31,8 @@ const mongodbs: { [key: string]: { [key:string]: { uri: string, name: string, op
 
 export const config = {
   host,
-  db: mongodbs.local
+  db: mongodbs.local,
+  jwt
 }
 
 

@@ -8,8 +8,8 @@ export function attachLogger (req: Request, res: Response, next: NextFunction): 
   next()
 }
 
-export function logRoute (request: Request, response: Response, next: NextFunction): void {
-  const method = request.method
-  request.log.info('')
+export function logRoute (req: Request, res: Response, next: NextFunction): void {
+  const method = req.method
+  req.log.info('')
   next()
 }

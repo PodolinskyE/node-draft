@@ -1,13 +1,14 @@
 import { Router } from 'express'
 
-import { createTokens, refreshTokens } from './auth.controller'
+import {
+  registerUser,
+  loginUser
+} from './auth.controller'
 
 const router = Router()
 // parent path : /auth/jwt
 
-
-router.post('/login', createTokens)
-router.post('/refresh', refreshTokens)
-
+router.post('/register', registerUser)
+router.post('/login', loginUser)
 
 export const jwtRouter = router

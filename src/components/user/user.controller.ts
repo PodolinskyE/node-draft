@@ -1,17 +1,18 @@
 import { Request, Response, NextFunction } from 'express'
+
 import { User } from '../../entities/user'
 import {
   createUser as serviceCreateUser,
   updateUser as serviceUpdateUser,
-  destroyUser as servicedestroyUser,
-  getUsersPage as serviceGetUsersPage
+  destroyUser as serviceDestroyUser,
+  getUsersPage as serviceGetUsersPage,
+  getById
 } from './user.service'
 
 
 export async function createUser (req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
-    const payload = <User>req.body
-    const user = await serviceCreateUser( payload )
+    const user = await serviceCreateUser( req.body )
     res.send(user)
   } catch (err) {
     next(err)
@@ -28,6 +29,10 @@ export async function getUsersPage (req: Request, res: Response, next: NextFunct
   } catch (err) {
     next(err)
   }
+}
+
+export async function getMe (req: Request, res: Response, next: NextFunction): Promise<void> {
+  res.send(req.middlewareData.actor)
 }
 
 export async function getUser (req: Request, res: Response, next: NextFunction): Promise<void> {
@@ -48,7 +53,7 @@ export async function updateUser (req: Request, res: Response, next: NextFunctio
 
 export async function destroyUser (req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
-    const user = await servicedestroyUser( req.params.id )
+    const user = await serviceDestroyUser( req.params.id )
     res.send('OK')
   } catch (err) {
     next(err)
