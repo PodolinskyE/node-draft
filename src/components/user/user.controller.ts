@@ -7,6 +7,7 @@ import {
   getUsersPage as serviceGetUsersPage
 } from './user.service'
 
+
 export async function createUser (req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
     const user = await serviceCreateUser(req.body)

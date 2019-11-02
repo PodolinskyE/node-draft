@@ -9,6 +9,7 @@ import { RefreshToken } from '../../entities/refreshToken'
 import { config } from '../../config'
 const { jwt: jwtConf } = config
 
+
 export function parseToken (cookies: any, headers: any): string {
   const token = cookies['access-token'] || headers['access-token'] || null
   return token

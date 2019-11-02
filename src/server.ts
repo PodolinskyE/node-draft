@@ -5,6 +5,7 @@ import { handleError } from './utils/error.controller'
 import { initCommonMiddleware } from './middleware/common.middleware'
 import { attachLogger, logRoute } from './utils/logger/logger.middleware'
 
+
 export let server: Express
 
 export function init (): void {

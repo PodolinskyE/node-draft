@@ -4,6 +4,7 @@ import { hashSync } from 'bcryptjs'
 import { userRepository } from '../../repositories'
 import { User } from '../../entities/user'
 
+
 export const createUser = async (
   payload: User
 ): Promise<User> => {

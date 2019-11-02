@@ -1,5 +1,6 @@
 import { Default } from './default'
 
+
 export enum RefreshTokenFields {
   Id = '_id',
   CreateDate = 'createDate',

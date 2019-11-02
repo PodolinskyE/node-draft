@@ -1,13 +1,12 @@
 import { Router } from 'express'
 
-import {
-  notFound
-} from './notFound.controller'
+import { notFound } from './notFound.controller'
 
-const router = Router()
 
 // parent path : /*
+const router = Router()
 
 router.get('*', notFound)
+
 
 export const notFoundRouter = router

@@ -10,13 +10,13 @@ import {
   updateRefreshToken as serviceUpdateRefreshToken,
   checkPassword as serviceCheckPassword
 } from './auth.service'
-
 import {
   createUser as serviceCreateUser,
   getById as serviceGetById,
   findUsername as serviceFindUsername
 } from '../../components/user/user.service'
 import { User } from '../../entities/user'
+
 
 export async function registerUser (req: Request, res: Response, next: NextFunction): Promise<void> {
   const user = await serviceCreateUser(req.body)

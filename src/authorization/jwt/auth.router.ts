@@ -6,11 +6,14 @@ import {
   refreshUserToken
 } from './auth.controller'
 
-const router = Router()
+
 // parent path : /auth/jwt
+const router = Router()
+
 
 router.post('/register', registerUser)
 router.post('/login', loginUser)
 router.post('/refresh', refreshUserToken)
+
 
 export const jwtRouter = router

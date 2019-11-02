@@ -1,6 +1,7 @@
 import { Request, Response } from 'express'
 import uuid from 'uuid/v1'
 
+
 export class Logger {
   correlationId: string
   protocol: string

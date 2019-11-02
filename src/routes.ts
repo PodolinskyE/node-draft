@@ -6,6 +6,7 @@ import { parseAuth } from './authorization/jwt/auth.middleware'
 import { apiRouter } from './components/api.router'
 import { notFoundRouter } from './components/notFound'
 
+
 export function init (): void {
   // health monitoring
   server.use('/ping', pong)

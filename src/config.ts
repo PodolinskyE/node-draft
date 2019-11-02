@@ -1,6 +1,7 @@
 import { MongoClientOptions } from 'mongodb'
 import { logger } from './utils/logger/logger'
 
+
 const host = {
   env: process.env.NODE_ENV || 'local',
   url: 'localhost',

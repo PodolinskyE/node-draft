@@ -2,7 +2,6 @@ import { Router } from 'express'
 
 import { validateIdFormat } from '../../middleware/id.middleware'
 import { getById } from './user.middleware'
-
 import {
   createUser,
   getUsersPage,
@@ -12,8 +11,10 @@ import {
   getUser
 } from './user.controller'
 
-const router = Router()
+
 // parent path : /api/0/user
+const router = Router()
+
 
 router.post('/', createUser)
 router.get('/me', getMe)
@@ -25,5 +26,6 @@ router.get('/:id', getUser)
 router.put('/:id', updateUser)
 router.patch('/:id', updateUser)
 router.delete('/:id', destroyUser)
+
 
 export const userRouter = router
