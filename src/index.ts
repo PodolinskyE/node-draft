@@ -21,6 +21,7 @@ async function init (): Promise<void> {
   logger.info('server started')
 }
 
+// eslint-disable-next-line @typescript-eslint/no-floating-promises
 init()
 
 export {}

@@ -21,13 +21,13 @@ export const createUser = async (
   return user
 }
 
-export async function getUsersPage (filter: any) {
-  return await userRepository
+export async function getUsersPage (filter: any): Promise<User[]> {
+  return userRepository
     .find()
     .toArray()
 }
 
-export function getById (id: string) {
+export async function getById (id: string): Promise<User> {
   return userRepository.findOne({
     _id: new ObjectId(id),
     deleted: null
@@ -48,15 +48,15 @@ export const updateUser = async (
   )).value
 }
 
-export async function destroyUser (id: string) {
-  return await userRepository
+export async function destroyUser (id: string): Promise<void> {
+  await userRepository
     .deleteOne({
       _id: new ObjectId(id)
     })
 }
 
 export async function findUsername (username: string): Promise<User> {
-  return await userRepository
+  return userRepository
     .findOne({
       username
     })

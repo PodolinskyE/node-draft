@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express'
 
-import { User } from '../../entities/user'
 import { getById as getUserBuId } from './user.service'
+
 
 export const getById = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {

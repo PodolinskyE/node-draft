@@ -8,7 +8,6 @@ export function attachLogger (req: Request, res: Response, next: NextFunction): 
 }
 
 export function logRoute (req: Request, res: Response, next: NextFunction): void {
-  const method = req.method
   req.log.info('')
   next()
 }

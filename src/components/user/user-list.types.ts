@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { UserFields, userWhiteList } from '../../entities/user'
 
 export enum ListSortOrder {

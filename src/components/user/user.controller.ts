@@ -1,12 +1,10 @@
 import { Request, Response, NextFunction } from 'express'
 
-import { User } from '../../entities/user'
 import {
   createUser as serviceCreateUser,
   updateUser as serviceUpdateUser,
   destroyUser as serviceDestroyUser,
-  getUsersPage as serviceGetUsersPage,
-  getById
+  getUsersPage as serviceGetUsersPage
 } from './user.service'
 
 export async function createUser (req: Request, res: Response, next: NextFunction): Promise<void> {
@@ -30,11 +28,11 @@ export async function getUsersPage (req: Request, res: Response, next: NextFunct
   }
 }
 
-export async function getMe (req: Request, res: Response, next: NextFunction): Promise<void> {
+export function getMe (req: Request, res: Response, next: NextFunction): void {
   res.send(req.middlewareData.actor)
 }
 
-export async function getUser (req: Request, res: Response, next: NextFunction): Promise<void> {
+export function getUser (req: Request, res: Response, next: NextFunction): void {
   res.send(req.middlewareData.user)
 }
 
@@ -42,7 +40,6 @@ export async function updateUser (req: Request, res: Response, next: NextFunctio
   try {
     const { body: updates } = req
     const { id } = req.params
-    const { user } = req.middlewareData
     const nextUser = await serviceUpdateUser(id, updates)
     res.send(nextUser)
   } catch (err) {
@@ -52,7 +49,7 @@ export async function updateUser (req: Request, res: Response, next: NextFunctio
 
 export async function destroyUser (req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
-    const user = await serviceDestroyUser(req.params.id)
+    await serviceDestroyUser(req.params.id)
     res.send('OK')
   } catch (err) {
     next(err)

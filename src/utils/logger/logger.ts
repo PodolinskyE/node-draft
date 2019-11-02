@@ -24,7 +24,7 @@ export class Logger {
     this.correlationId = correlationId
   }
 
-  private prefix () {
+  private prefix (): string {
     return `[ ${new Date().toISOString()} ] [${this.correlationId}]  ${this.protocol} : ${this.method} | ${this.url}  |  `
   }
 

@@ -25,7 +25,7 @@ export const parseAuth = async (req: Request, res: Response, next: NextFunction)
       ) as JwtPayload
     } catch (err) {
       if (err.name === 'TokenExpiredError') {
-        res.status(407).json({ message: 'token expired at ' + err.expiredAt })
+        res.status(407).json({ message: `token expired at ${err.expiredAt}` })
         return
       }
       res.clearCookie('access-token')
