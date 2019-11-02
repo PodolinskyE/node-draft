@@ -1,5 +1,4 @@
-import { User, UserFields, userWhiteList } from '../../entities/user'
-
+import { UserFields, userWhiteList } from '../../entities/user'
 
 export enum ListSortOrder {
   Asc = 'asc',
@@ -34,13 +33,11 @@ type UserListRequestPayload = {
 }
 */
 
-
 /*
 export type TimeInterval = {
   start: Date
   end: Date
 }
-
 
 export type UserListQuery = {
   fields: string[]

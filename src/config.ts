@@ -1,5 +1,4 @@
 import { MongoClientOptions } from 'mongodb'
-
 import { logger } from './utils/logger/logger'
 
 const host = {
@@ -10,12 +9,17 @@ const host = {
 
 const jwt = {
   key: 'learn',
-  expires: 5 * 60 * 1000
+  accessExpires: 5 * 60, // seconds
+  cookieExpires: 1000 * 60 * 60 * 24 * 365, // 1 year
+  options: {
+    httpOnly: true,
+    sameSite: true
+  }
 }
 
-const mongodbs: { [key: string]: { [key:string]: { uri: string, name: string, options: MongoClientOptions } } } = {
+const mongodbs: { [key: string]: { [key: string]: { uri: string, name: string, options: MongoClientOptions } } } = {
   local: {
-    main : {
+    main: {
       uri: 'mongodb://localhost:27017',
       name: 'sandbox-node-draft',
       options: {
@@ -34,7 +38,6 @@ export const config = {
   db: mongodbs.local,
   jwt
 }
-
 
 logger.info(`
   

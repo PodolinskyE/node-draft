@@ -4,12 +4,11 @@ import { hashSync } from 'bcryptjs'
 import { userRepository } from '../../repositories'
 import { User } from '../../entities/user'
 
-
 export const createUser = async (
   payload: User
 ): Promise<User> => {
   const passhash = hashSync(payload.password)
-  
+
   const now = new Date()
   const data: User = {
     ...payload,
@@ -17,7 +16,7 @@ export const createUser = async (
     createDate: now,
     updateDate: now
   }
-  const { ops: [ user ] } = await userRepository.insertOne(data)
+  const { ops: [user] } = await userRepository.insertOne(data)
   // TODO: omit blacklist
   return user
 }
@@ -28,7 +27,7 @@ export async function getUsersPage (filter: any) {
     .toArray()
 }
 
-export function getById(id: string) {
+export function getById (id: string) {
   return userRepository.findOne({
     _id: new ObjectId(id),
     deleted: null

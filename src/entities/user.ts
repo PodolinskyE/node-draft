@@ -2,11 +2,12 @@ import { Default } from './default'
 
 export enum UserFields {
   Id = '_id',
+  CreateDate = 'createDate',
+  UpdateDate = 'updateDate',
+  Deleted = 'deleted',
   Username = 'username',
   Password = 'password',
-  Passhash = 'passhash',
-  CreateDate = 'createDate',
-  UpdateDate = 'updateDate'
+  Passhash = 'passhash'
 }
 
 export const userWhiteList = [
@@ -27,24 +28,19 @@ export const usersBlackProjection = userBlackList
     [cur]: 0
   }), {})
 
-
 export const usersWhiteProjection = userWhiteList
   .reduce((acc, cur) => ({
     ...acc,
     [cur]: 1
   }), {})
 
-
 export const usersOutProjection = {
-  ... usersWhiteProjection,
-  ... usersBlackProjection
+  ...usersWhiteProjection,
+  ...usersBlackProjection
 }
 
 export type User = {
-  [UserFields.Username]: string,
+  [UserFields.Username]: string
   [UserFields.Password]?: string
   [UserFields.Passhash]?: string
 } & Default
-
-
-

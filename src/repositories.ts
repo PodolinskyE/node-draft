@@ -2,11 +2,12 @@ import { Collection, Db, ReadPreference } from 'mongodb'
 
 import { config } from './config'
 import {
-  User
+  User,
+  RefreshToken
 } from './entities'
 
-
 export let userRepository: Collection<User>
+export let refreshTokenRepository: Collection<RefreshToken>
 
 const options = config.host.env === 'local'
   ? null
@@ -14,4 +15,5 @@ const options = config.host.env === 'local'
 
 export function initRepositories (db: Db): void {
   userRepository = db.collection('users', options, () => {})
+  refreshTokenRepository = db.collection('refresh-tokens', options, () => {})
 }

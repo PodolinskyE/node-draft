@@ -6,12 +6,8 @@ import {
 
 const router = Router()
 
-
-
-
 // parent path : /*
 
 router.get('*', notFound)
-
 
 export const notFoundRouter = router

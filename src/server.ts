@@ -5,12 +5,9 @@ import { handleError } from './utils/error.controller'
 import { initCommonMiddleware } from './middleware/common.middleware'
 import { attachLogger, logRoute } from './utils/logger/logger.middleware'
 
-
 export let server: Express
 
-
 export function init (): void {
-
   server = express()
   server.disable('x-powered-by')
   server.use(express.json({
@@ -23,7 +20,6 @@ export function init (): void {
     server.use(logRoute)
   }
 }
-
 
 export function start (): void {
   server.use(handleError)

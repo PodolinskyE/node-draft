@@ -9,10 +9,9 @@ import {
   getById
 } from './user.service'
 
-
 export async function createUser (req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
-    const user = await serviceCreateUser( req.body )
+    const user = await serviceCreateUser(req.body)
     res.send(user)
   } catch (err) {
     next(err)
@@ -23,8 +22,8 @@ export async function getUsersPage (req: Request, res: Response, next: NextFunct
   try {
     const { query } = req
 
-    const userList = await serviceGetUsersPage( query )
-    
+    const userList = await serviceGetUsersPage(query)
+
     res.send(userList)
   } catch (err) {
     next(err)
@@ -44,7 +43,7 @@ export async function updateUser (req: Request, res: Response, next: NextFunctio
     const { body: updates } = req
     const { id } = req.params
     const { user } = req.middlewareData
-    const nextUser = await serviceUpdateUser( id, updates )
+    const nextUser = await serviceUpdateUser(id, updates)
     res.send(nextUser)
   } catch (err) {
     next(err)
@@ -53,7 +52,7 @@ export async function updateUser (req: Request, res: Response, next: NextFunctio
 
 export async function destroyUser (req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
-    const user = await serviceDestroyUser( req.params.id )
+    const user = await serviceDestroyUser(req.params.id)
     res.send('OK')
   } catch (err) {
     next(err)

@@ -3,7 +3,6 @@ import { Router } from 'express'
 import { validateIdFormat } from '../../middleware/id.middleware'
 import { getById } from './user.middleware'
 
-
 import {
   createUser,
   getUsersPage,
@@ -13,16 +12,13 @@ import {
   getUser
 } from './user.controller'
 
-
 const router = Router()
 // parent path : /api/0/user
-
 
 router.post('/', createUser)
 router.get('/me', getMe)
 // TODO validate payload
 router.get('/filter', getUsersPage)
-
 
 router.use('/:id', validateIdFormat, getById)
 router.get('/:id', getUser)

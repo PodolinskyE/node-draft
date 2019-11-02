@@ -7,6 +7,8 @@
     "start": "export \"NODE_ENV=local\" && tsc && \"node dist/index.js\"",
     "debug": "export \"NODE_ENV=local\" && tsc-watch --onSuccess \"node --inspect dist/index.js\"",
     "debug-brk": "export \"NODE_ENV=local\" && tsc-watch --onSuccess \"node --inspect-brk dist/index.js\"",
+    "lint": "npx eslint --ext .js,.ts ./src",
+    "lint.file": "npx eslint --fix ./src/_stubs/**",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -21,6 +23,13 @@
     "@types/ms": "^0.7.31",
     "@types/node": "^12.11.2",
     "@types/uuid": "^3.4.5",
+    "@typescript-eslint/eslint-plugin": "^2.6.0",
+    "eslint": "^6.6.0",
+    "eslint-config-standard-with-typescript": "^10.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
     "tsc-watch": "^4.0.0",
     "typescript": "^3.6.4"
   },
@@ -30,7 +39,27 @@
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.3.3",
-    "ms": "^2.1.2",
     "uuid": "^3.3.3"
+  },
+  "eslintConfig": {
+    "extends": [
+      "standard-with-typescript"
+    ],
+    "env": {
+      "node": true
+    },
+    "parserOptions": {
+      "project": "./tsconfig.json"
+    },
+    "rules": {
+      "@typescript-eslint/strict-boolean-expressions": 0,
+      "@typescript-eslint/consistent-type-definitions": 0,
+      "@typescript-eslint/promise-function-async": [
+        "error",
+        {
+          "checkArrowFunctions": false
+        }
+      ]
+    }
   }
 }
