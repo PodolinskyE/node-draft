@@ -1,10 +1,8 @@
 import { Router } from 'express'
 
-import { jwtRouter } from './jwt/auth.router'
+import { jwtRouter } from './jwt/jwt.router'
 
 
-const router = Router()
+export const authRouter = Router()
 
-router.use('/jwt', jwtRouter)
-
-export const authRouter = router
+authRouter.use('/jwt', jwtRouter)

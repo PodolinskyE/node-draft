@@ -13,19 +13,15 @@ import {
 
 
 // parent path : /api/0/user
-const router = Router()
+export const userRouter = Router()
 
-
-router.post('/', createUser)
-router.get('/me', getMe)
+userRouter.post('/', createUser)
+userRouter.get('/me', getMe)
 // TODO validate payload
-router.get('/filter', getUsersPage)
+userRouter.get('/filter', getUsersPage)
 
-router.use('/:id', validateIdFormat, getById)
-router.get('/:id', getUser)
-router.put('/:id', updateUser)
-router.patch('/:id', updateUser)
-router.delete('/:id', destroyUser)
-
-
-export const userRouter = router
+userRouter.use('/:id', validateIdFormat, getById)
+userRouter.get('/:id', getUser)
+userRouter.put('/:id', updateUser)
+userRouter.patch('/:id', updateUser)
+userRouter.delete('/:id', destroyUser)

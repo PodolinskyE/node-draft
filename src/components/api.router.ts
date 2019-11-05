@@ -3,9 +3,6 @@ import { Router } from 'express'
 import { userRouter } from './user/user.router'
 
 
-const router = Router()
+export const apiRouter = Router()
 
-
-router.use('/user', userRouter)
-
-export const apiRouter = router
+apiRouter.use('/user', userRouter)

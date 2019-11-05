@@ -61,7 +61,7 @@ export async function deleteRefreshToken (userId: string): Promise<void> {
     userId
   })
 }
-  
+
 export function getRefreshTokenOptions (): CookieOptions {
   return {
     ...jwtConf.options,

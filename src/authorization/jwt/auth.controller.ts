@@ -101,7 +101,7 @@ export async function logoutUser (req: Request, res: Response, next: NextFunctio
     }
 
     await serviceDeleteRefreshToken(dbToken.userId)
-    
+
     res.clearCookie('access-token')
     res.clearCookie('refresh-token')
 

@@ -4,9 +4,6 @@ import { notFound } from './notFound.controller'
 
 
 // parent path : /*
-const router = Router()
+export const notFoundRouter = Router()
 
-router.get('*', notFound)
-
-
-export const notFoundRouter = router
+notFoundRouter.get('*', notFound)

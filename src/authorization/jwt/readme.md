@@ -15,7 +15,7 @@ reusable
 config.accessExpires
 
 
-in scope of jsninjs tutorial:
+in scope of jsninja tutorial:
 
 refreshToken (== authToken)
 token == accessToken
