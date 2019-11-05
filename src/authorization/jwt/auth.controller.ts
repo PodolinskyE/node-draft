@@ -8,6 +8,7 @@ import {
   getRefreshTokenOptions as servicegetRefreshTokenOptions,
   getRefreshToken as serviceGetRefreshToken,
   updateRefreshToken as serviceUpdateRefreshToken,
+  deleteRefreshToken as serviceDeleteRefreshToken,
   checkPassword as serviceCheckPassword
 } from './auth.service'
 import {
@@ -80,6 +81,31 @@ export async function refreshUserToken (req: Request, res: Response, next: NextF
       refreshToken: nextRefreshToken,
       accessToken: accessToken
     })
+  } catch (err) {
+    next(err)
+  }
+}
+
+export async function logoutUser (req: Request, res: Response, next: NextFunction): Promise<void> {
+  try {
+    const refreshToken = req.cookies['refresh-token'] || null
+    const dbToken = await serviceGetRefreshToken(refreshToken)
+    if (!dbToken) {
+      res.status(404).send({ message: 'User not found!' })
+      return
+    }
+    const user = await serviceGetById(dbToken.userId)
+    if (!user) {
+      res.status(404).send('User not found!')
+      return
+    }
+
+    await serviceDeleteRefreshToken(dbToken.userId)
+    
+    res.clearCookie('access-token')
+    res.clearCookie('refresh-token')
+
+    res.send('OK')
   } catch (err) {
     next(err)
   }

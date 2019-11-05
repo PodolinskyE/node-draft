@@ -3,7 +3,8 @@ import { Router } from 'express'
 import {
   registerUser,
   loginUser,
-  refreshUserToken
+  refreshUserToken,
+  logoutUser
 } from './auth.controller'
 
 
@@ -14,6 +15,6 @@ const router = Router()
 router.post('/register', registerUser)
 router.post('/login', loginUser)
 router.post('/refresh', refreshUserToken)
-
+router.post('/logout', logoutUser)
 
 export const jwtRouter = router

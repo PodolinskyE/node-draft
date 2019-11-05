@@ -56,6 +56,12 @@ export async function updateRefreshToken (userId: string, token: string): Promis
   )
 }
 
+export async function deleteRefreshToken (userId: string): Promise<void> {
+  await refreshTokenRepository.deleteOne({
+    userId
+  })
+}
+  
 export function getRefreshTokenOptions (): CookieOptions {
   return {
     ...jwtConf.options,
